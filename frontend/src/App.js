@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
+import ProductCard from './components/ProductCard';
+
 function App() {
   const [products, setProducts] = useState([]);
 
@@ -21,9 +23,12 @@ function App() {
   return (
     <div className='App'>
       <h1>Inventory App</h1>
+      <div className='container'>
+      {products.length > 0 ? <ProductCard item={products[0]} /> : 'Please Wait'}
       {products.length > 0
-        ? products.map((item) => <p key={item.id}>{item.title}</p>)
+        ? products.map((item) => <ProductCard item={item} />)
         : 'No products to display'}
+    </div>
     </div>
   );
 }
